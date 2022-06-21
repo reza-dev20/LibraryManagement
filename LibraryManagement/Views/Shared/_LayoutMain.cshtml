@@ -1,0 +1,178 @@
+﻿@using LibraryManagement.Models
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/MainStyle.css" />
+    <link rel="stylesheet" href="~/Content/NewMemberStyle.css" />
+    <link rel="stylesheet" href="~/Content/MemberListStyle.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="header-parent">
+        @*@RenderSection("main_header_section", required: false)*@
+        <header>
+            <div>
+                <nav id="nav-header-menu">
+                    <ul class="main-menu main-menu-admin">
+                        <li><a href="@Url.Action("AddUser","Admin")" id="NewUser"><i class="fa-solid fa-user-plus"></i> کاربر جدید</a></li>
+                        <li><a id="EditUser"><i class="fa-solid fa-user-pen"></i> ویرایش کاربر</a></li>
+                        <li><a id="AddBook"><i class="fa-solid fa-file-circle-plus"></i> افزودن کتاب</a></li>
+                    </ul>
+                    <ul class="main-menu">
+                        <li><a id="NewMember"><i class="fa-solid fa-user-plus"></i> عضو جدید</a></li>
+                        <li><a id="MemberList"><i class="fa-solid fa-user-pen"></i> ویرایش اعضا</a></li>
+                        <li><a href="@Url.Action("BookList","Book")" id="BookInfo"><i class="fa-solid fa-book-bookmark"></i> اطلاعات کتب</a></li>
+                        <li><a href="@Url.Action("BorrowBookList","Book")" id="BookLoan"><i class="fa-solid fa-indent"></i> امانت کتاب</a></li>
+                        <li><a id="BookReport"><i class="fa-solid fa-file-lines"></i> گزارش</a></li>
+                        <li style="float:left;"><a href="@Url.Action("Logout","Base") id="Exit"><i class="fa-solid fa-arrow-right-from-bracket"></i> خروج</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <main>
+        <div id="mainBody">
+            @RenderBody()
+        </div>
+    </main>
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>   
+    <script>
+        var id = 0;
+        $("#NewMember").on("click", function () {
+            newMemberPage();
+        });
+        $("#MemberList").on("click", function () {
+            MemberListPage();
+        });
+        @*$("#BookInfo").on("click", function () {
+            MemberListPage();
+        });*@
+        //Click event: for edit member in member list table
+        $("body").on("click", "#tblMemberList .btnEditMember", function () {
+            var row = $(this).closest("tr");
+            
+            $("td", row).each(function (index, td) {
+                if (index == 0) {
+                    id = td.innerText;
+                    editMemberPage(id);
+                    return;
+                }
+            });           
+        });
+
+
+        //Click event: for Delete member in member list table
+        $("body").on("click", "#tblMemberList .btnDeleteMember", function () {
+            var row = $(this).closest("tr");
+
+            $("td", row).each(function (index, td) {
+                if (index == 0) {                   
+                    id = td.innerText;
+                    deleteMember(id);
+                    row.remove();
+                    return;
+                }
+            });
+        });
+       
+    </script>
+    <script>
+
+        function newMemberPage() {
+            $("#mainBody").load("/Main/NewMember", function () { });
+        }
+
+        function MemberListPage() {
+            $("#mainBody").load("/Main/MemberList", function () { });
+        }
+
+        function editMemberPage(Id) {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("EditMember", "Main")",
+                data: { id: Id },
+                success: function (partialView) {
+                    $("#mainBody").empty();
+                    $("#mainBody").append(partialView);
+
+                }
+            });
+        }
+        function deleteMember(Id) {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("DeleteMember", "Main")",
+                data: { id: Id },
+                success: function (partialView) {
+                    $("#mainBody").empty();
+                    $("#mainBody").append(partialView);
+                }
+            });   
+        }
+        
+
+        $("body").on("keyup", "#member-Searchbox", function () {
+            var value = $("#member-Searchbox").val();
+          
+            $("table tr").each(function (index) {
+                if (!index) return;
+                $(this).find("td").each(function () {
+                    var id = $(this).text().toLowerCase().trim();
+                    var not_found = (id.indexOf(value) == -1);
+                    $(this).closest('tr').toggle(!not_found);
+                    return not_found;
+                });
+            });
+        });
+
+        $("body").on("keyup", "#book-Searchbox", function () {
+            var value = $("#book-Searchbox").val();
+
+            $("table tr").each(function (index) {
+                if (!index) return;
+                $(this).find("td").each(function () {
+                    var id = $(this).text().toLowerCase().trim();
+                    var not_found = (id.indexOf(value) == -1);
+                    $(this).closest('tr').toggle(!not_found);
+                    return not_found;
+                });
+            });
+        });
+        
+    </script>
+    @{
+        if (TempData["TargetDir"] != null)
+        {
+            switch (TempData["TargetDir"])
+            {
+                case TargetDirection.NewMember:
+                    <script>newMemberPage();</script>
+                    break;
+                 case TargetDirection.EditMember:
+                    <script>editMemberPage();</script>
+                    break;
+                case TargetDirection.MemberList:
+                    <script>MemberListPage();</script>
+                    break;
+            }
+        }
+    }
+
+</body>
+</html>
+
+
+@*$.ajax({
+        type: "GET",
+        url: "@Url.Action("EditMember", "Main")",
+        data: { id:Id },
+        success: function (partialView) {
+        $("#mainBody").empty();
+        $("#mainBody").append(partialView);
+
+        }
+    });*@

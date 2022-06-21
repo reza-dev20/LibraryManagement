@@ -1,0 +1,90 @@
+﻿table-parent {
+    text-align: center;
+}
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 30px auto;
+}
+td, th {
+    border: 1px solid #7F8487;
+    padding: 6px 4px;
+    text-align: center;
+}
+th{
+    background: #000;
+    color:white;
+    font: bold  18px vazir,Arial;
+}
+td{
+    color: #000;    
+}
+.txt-success {
+    margin: 20px 10px;
+    background: #808080;
+    color: white;
+    font-size: 16px;
+    padding: 4px;
+    border-radius:2px;
+}
+.btnEdit{
+    padding: 4px 8px;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    text-decoration:none;
+
+}
+.btnEdit:hover {
+    cursor:pointer;
+}
+.btnEditMember {
+    background: #00b317;
+}
+.btnDeleteMember {
+    background: #ca0404;
+}
+
+
+.topnav {
+width: 90%;
+overflow: hidden;
+background-color: transparent;
+margin: auto;
+}
+
+.topnav .search-container {
+    float: right;
+    height: 50px;
+}
+
+.topnav input[type=text] {
+    padding: 5px;
+    margin: 10px 2px;
+    font-size: 17px;
+    border-radius: 3px;
+    border-color: #e9e9e9;
+}
+
+.topnav input[type=text]:focus {
+    border-width: 1px;
+    border-color: #a6a6a6;
+    border-radius: 3px;
+}
+
+.topnav .search-container button {
+    float: right;
+    height: 40px;
+    padding: 6px 10px;
+    text-align: center;
+    margin: 10px 0px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }

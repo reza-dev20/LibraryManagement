@@ -1,0 +1,64 @@
+﻿@model DataLayer.Model.Member
+@using LibraryManagement.Models
+
+<div>
+    @using (Html.BeginForm("EditMember", "Main", FormMethod.Post))
+    {
+        <div id="new-member-form">
+            <section class="newMember-right-section">
+                @Html.HiddenFor(m => m.MemberId);
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.EditorFor(m => m.Name, new { @Value = Model.Name })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NationalCode, htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.EditorFor(m => m.NationalCode, new { @Value = Model.NationalCode })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.RegistrationDate, htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.EditorFor(m => m.RegistrationDate, new { @Value = Model.RegistrationDate })
+                    </div>
+                </div>
+            </section>
+
+            <section class="newMember-left-section">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Family, htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.TextBoxFor(m => m.Family, new { @Value = Model.Family })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MobileNumber, htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.TextBoxFor(m => m.MobileNumber, new { @Value = Model.MobileNumber })
+                    </div>
+                </div>
+            </section>
+            <div class="spacer" style="clear: both;"></div>
+            @*<div>
+                @{
+                    if (Session[Sessions.USEREXIST.ToString()] != null)
+                    {
+                        @Html.ValidationMessageFor(m => m.Id, Session[Sessions.USEREXIST.ToString()].ToString(), new { @class = "text-danger" });
+                        Session[Sessions.USEREXIST.ToString()] = null;
+                    }
+                    else if (Session[Sessions.OPERATION_RESULT.ToString()] != null)
+                    {
+                        @Html.ValidationMessageFor(m => m.Id, Session[Sessions.OPERATION_RESULT.ToString()].ToString(), new { @class = "text-danger" });
+                        Session[Sessions.OPERATION_RESULT.ToString()] = null;
+                    }
+                }
+            </div>*@
+            <input type="submit" id="submit" value="بروزرسانی" />
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,86 @@
+﻿input[type=text], input[type=number],input[type=date] {
+    font: 16px vazir,Arial;
+    padding: 0 3px;
+}
+#new-member-form {
+    margin: 20px 20px;
+    background: #4C3575;
+    padding: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px 2px rgb(128 128 128 / 0.80);
+    text-align: center;
+}
+#new-member-form > #submit {
+    background: #2666CF;
+    padding: 5px 10px;
+    width: 125px;
+    height: 55px;
+    margin: 55px 0px 7px 0px;
+    color: white;
+    border-radius: 7px;
+    border-color: transparent;
+    font: 20px "vazir",arial;
+    color: white;
+}
+
+#new-member-form > #submit:hover {
+    cursor: pointer;
+    background: #337384;
+}
+
+.newMember-left-section {
+    width: 50%;
+    background-color: transparent;
+    float: left;
+    text-align: center;
+}
+.newMember-right-section {
+    width: 50%;
+    background-color: transparent;
+    float: right;
+    text-align: center;
+    margin: 0 auto;
+}
+.newMember-left-section input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: lightgray;
+}
+.newMember-right-section input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: lightgray;
+}
+.newMember-right-section .form-group {
+    margin: 10px 0;
+    width: 70%;
+    height: 80px;
+}
+.newMember-left-section input, .newMember-right-section input:focus {
+    border-color: white;
+    border-width: 3px;
+    outline-offset: 0;
+}
+.newMember-left-section .form-group {
+    margin: 10px 0;
+    width: 70%;
+    height: 80px;
+}
+.newMember-right-section .form-group .input-label {
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: white;
+    padding: 5px;
+}
+.newMember-left-section .form-group .input-label {
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    color: white;
+    padding: 5px;
+}
+
+

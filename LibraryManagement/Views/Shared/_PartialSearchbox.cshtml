@@ -1,0 +1,59 @@
+﻿
+<style>
+
+    .topnav {
+        width:90%;
+        overflow: hidden;
+        background-color: transparent;
+        margin: auto;
+    }
+
+    .topnav .search-container {
+        float: right;
+        height: 50px;    
+        
+    }
+
+    .topnav input[type=text] {
+
+        padding: 5px;
+        margin: 10px 2px;
+        font-size: 17px;
+        border-radius: 3px;
+        border-color: #e9e9e9;
+    }
+
+    .topnav input[type=text]:focus {
+        border-width: 1px;
+        border-color: #a6a6a6;
+        border-radius: 3px;
+    }
+
+    .topnav .search-container button {
+        float: right;
+        height: 40px;
+        padding: 6px 10px;
+        text-align:center;
+        margin: 10px 0px;
+       
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }
+
+</style>
+
+<div class="topnav">
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="جستجو..." name="search" id="t-Searchbox">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>

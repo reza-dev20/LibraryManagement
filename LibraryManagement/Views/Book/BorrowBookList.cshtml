@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DataLayer.Model.Borrow>
+
+@{
+    ViewBag.Title = "BorrowBookList";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@*<h2>BorrowBookList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div style="overflow: auto;">
+    <div>
+        @Html.Partial("_PartialBookBorrow");
+    </div>
+    <table class="table">        
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateLending)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReturn)
+            </th>
+            <th>
+                @Html.DisplayName("")
+            </th>
+            @*<th></th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLending)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReturn)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsReturned)
+        </td>*@
+        <td>
+            @Html.ActionLink("حذف", "DeleteBookBorrow", "Book", new { bookId = item.BookId, memberId = item.MemberId }, new { @class = "btnEdit btnDeleteMember", id = "delete" + item.Id })
+        </td>
+    </tr>
+        }
+
+    </table>
+</div>

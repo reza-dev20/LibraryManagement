@@ -1,0 +1,56 @@
+﻿@using LibraryManagement.Models
+
+
+<div id="borrow_form">
+    @using (Html.BeginForm("AddBorrowBook", "Book",FormMethod.Post))
+    {
+        <div id="new-member-form" style="margin: 10px 20px; background: #4C3575; padding: 10px 10px; border-radius: 10px; box-shadow: 4px 4px 5px 2px rgb(128 128 128 / 0.80); text-align: center;">
+            <section class="newMember-right-section">
+                <div class="form-group">
+                    @Html.Label("کد کتاب", htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.Editor("BookId")
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("کد عضویت", htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.Editor("MemberId")
+                    </div>
+                </div>                
+            </section>
+
+            <section class="newMember-left-section">
+                <div class="form-group">
+                    @Html.Label("تاریخ بازگشت", htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.Editor("DateReturn");
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("تاریخ گرفتن کتاب", htmlAttributes: new { @class = "input-label" })
+                    <div>
+                        @Html.Editor("DateLending")
+                    </div>
+                </div>
+            </section>
+            <div class="spacer" style="clear: both;"></div>
+            <div>
+               @* @{
+                    if (Session[Sessions.USEREXIST.ToString()] != null)
+                    {
+                        @Html.ValidationMessageFor(m => m.Id, Session[Sessions.USEREXIST.ToString()].ToString(), new { @class = "txt-success" });
+                        Session[Sessions.USEREXIST.ToString()] = null;
+                    }
+                    else if (Session[Sessions.OPERATION_RESULT.ToString()] != null)
+                    {
+                        @Html.ValidationMessageFor(m => m.Id, Session[Sessions.OPERATION_RESULT.ToString()].ToString(), new { @class = "txt-success" });
+                        Session[Sessions.OPERATION_RESULT.ToString()] = null;
+                    }
+                }*@
+            </div>
+            <input type="submit" id="submit" value="ثبت" />
+        </div>
+    }
+</div>
+

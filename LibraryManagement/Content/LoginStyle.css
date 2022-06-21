@@ -1,0 +1,81 @@
+﻿@font-face {
+    font-family: 'vazir';
+    src: url('~/fonts/vazir.eot'),
+    url('~/fonts/vazir.woff2') format('woff2'),
+    url('~/fonts/vazir.woff') format('woff'), 
+    url('~/fonts/vazir.ttf') format('truetype'), 
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'vazir',sans-serif;
+    background: #D3EBCD;
+}
+input:focus {
+    outline-offset: 0;
+}
+form {
+    height: 400px;
+}
+.login-card {
+    position: relative;
+    height: 500px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 10px 10px;
+    max-width: 450px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px rgb(79 79 79 / 0.30);
+}
+
+.login-card h3 {
+    text-align:center;
+}
+
+.input-group{
+    height: 100px;
+    padding: 5px 0;   
+}
+.input-label{
+    display: block;
+    text-align:right;
+    padding: 0px 5px;
+    margin: 5px 15px;
+}
+
+.input-field {
+    width: 400px;
+    height: 32px;
+    padding: 5px;
+    border: 1px solid #E0DEDE;
+    border-radius: 6px;
+}
+
+.input-field:focus {
+    border: 3px solid #888888;
+    border-radius: 6px;
+    outline: none;
+}
+.txt-warning {
+    color: #ff9966;
+}
+#submit {
+    width: 130px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    padding: 10px 15px;
+    font-size: 18px;
+    background: #839AA8;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 10px;
+}
+#submit:hover {
+    cursor: pointer;
+    background: #7d93a1;
+}
